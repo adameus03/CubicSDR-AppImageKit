@@ -1,8 +1,8 @@
 NPROC := 2
 
 APPIMAGE_TARGET := CubicSDR.AppImage
-DEPS := SoapySDR SoapyRemote SoapyRTLSDR SoapyAirspy SoapyAirspyHF SoapyAudio SoapyHackRF SoapyRedPitaya SoapyBladeRF LimeSuite
-MODULE_DEPS := rtlsdr libairspy libairspyhf hackrf bladerf 
+DEPS := SoapySDR SoapyRemote SoapyRTLSDR SoapyAirspy SoapyAirspyHF SoapyAudio SoapyHackRF SoapyRedPitaya SoapyBladeRF LimeSuite SoapyPlutoSDR
+MODULE_DEPS := rtlsdr libairspy libairspyhf hackrf bladerf libiio
 
 LimeSuite_REPO := https://github.com/myriadrf/LimeSuite.git
 
@@ -18,6 +18,9 @@ hackrf_SRCDIR := /host
 bladerf_REPO := https://github.com/Nuand/bladeRF
 bladerf_FLAGS := -DCMAKE_C_FLAGS=-std=gnu99
 bladerf_SRCDIR := /host
+
+libiio_REPO := https://github.com/analogdevicesinc/libiio/ v0.25
+libiio_FLAGS := -DWITH_TESTS=OFF -DHAVE_DNS_SD=OFF 
 
 ALL_DEPS := $(DEPS) $(MODULE_DEPS)
 
@@ -102,6 +105,7 @@ build_status/SoapyAirspy.built: libairspy
 build_status/SoapyAirspyHF.built: libairspyhf
 build_status/SoapyHackRF.built: hackrf
 build_status/SoapyBladeRF.built: bladerf
+build_status/SoapyPlutoSDR.built: libiio
 
 SoapySDRPlay: build_status/SoapySDRPlay.built
 
