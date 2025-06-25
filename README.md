@@ -10,7 +10,7 @@ $ vagrant ssh
 After connecting to the vagrant environment via SSH, run the following commands:
 ```
 $ cd /vagrant
-$ make
+$ sudo make
 ```
 
 The compilation should complete and produce an `.AppImage` file in the in `/vagrant/` directory
